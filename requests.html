@@ -1,0 +1,155 @@
+ <!DOCTYPE html>
+ <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Asset Management System</title>
+        <link rel="stylesheet" href="./requestsStyle.css"> <!-- style file-->
+        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'> <!--icons link-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <!--jquery link--> 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--chart js link-->
+     </head>
+ <body>
+    <section class="mainBody">
+        <header>
+            <span class="pageName">Request</span>
+            <nav class="sideNav">
+                <ul>
+                    <li>
+                        <a href="./dashboard.html"><i class='bx bxs-dashboard'></i></a> 
+                    </li>
+                    <li>
+                        <a href="./alerts.html"><i class='bx bxs-bell' ></i></a> 
+                    </li>
+                    <li>
+                        <a href="./requests.html"><i class='bx bxs-layer' ></i></a> 
+                    </li>
+                    <li>
+                        <a href="./settings2.html"><i class='bx bxs-user'></i></a> 
+                    </li>
+                    <li>
+                        <a href="#"><i class='bx bx-log-out-circle' id="logoutBtn"></i></a>
+                    </li>
+                </ul>
+            </nav>
+            <section class="headerBtnSet">
+                <button class="reqAsset" id="launchRequestForm">Request asset</button>
+            </section>
+        </header>
+         <main>
+             <section class="cardsPanel">
+                 <section class="cardGroup movementsCardGroup">
+                    <div class="cardHeader">Movement Requests</div>
+                    <section class="cardBody">
+                        <section class="subSec mTotal" id="mTotal">
+                            <div class="subSecTitle">Total Requests</div>
+                            <div class="subSecValue" id="mTotalRequests">100</div>
+                        </section>
+                        <section class="subSec mPending" id="mPending">
+                            <div class="subSecTitle">Pending Requests</div>
+                            <div class="subSecValue" id="mPendingRequests">100</div>
+                        </section>
+                        <section class="subSec mApproved" id="mApproved">
+                            <div class="subSecTitle">Approved Requests</div>
+                            <div class="subSecValue" id="mApprovedRequests">100</div>
+                        </section>
+                        <section class="subSec mDenied" id="mDenied">
+                            <div class="subSecTitle">Denied Requests</div>
+                            <div class="subSecValue" id="mDeniedRequests">100</div>
+                        </section>
+                    </section>
+                 </section>
+             </section>
+
+             <section class="tableContainer">
+                 <section class="tableName" id="tableName"></section>
+                 <section class="tableHolder" id="tableHolder">
+                    <table>
+                     </table>
+                 </section>
+             </section>
+         </main>
+         <footer></footer>
+    </section> 
+
+     <!-- request form  -->
+
+ <section class="modal reqAssetModal" id="assetForm">
+    <section class="modalFormFront" id="assetFormFront">
+        <i class='bx bx-x closeModal' ></i>
+        <h2 class="modalTitle">Request asset</h2>
+        <form class="modalForm reqAssetForm">
+            <!-- requestor Name -->
+            <section class="fieldContainer">
+                <section class="inputContainer">
+                    <i class='bx bxs-user fieldIcon' ></i>
+                    <input type="text" name="reqName" id="reqName" placeholder="your name">
+                    <i class='bx bx-x clearfield' ></i>
+                </section>
+                <div class="errorMsg">Error message</div>
+            </section>
+            <!-- requestor ID -->
+            <section class="fieldContainer">
+                <section class="inputContainer">
+                    <i class='bx bxs-id-card fieldIcon' ></i>
+                    <input type="text" name="reqID" id="reqID" placeholder="your id">
+                    <i class='bx bx-x clearfield' ></i>
+                </section>
+                <div class="errorMsg">Error message</div>
+            </section>
+            <!-- asset Department -->
+            <section class="fieldContainer">
+                <section class="inputContainer">
+                    <i class='bx bxs-buildings fieldIcon' ></i>
+                    <input type="text" name="assetDept" id="assetDept" placeholder="asset dept">
+                    <i class='bx bx-x clearfield' ></i>
+                </section>
+                <div class="errorMsg">Error message</div>
+            </section>
+            <!-- asset ID -->
+            <section class="fieldContainer">
+                <section class="inputContainer">
+                    <i class='bx bxs-devices fieldIcon' ></i>
+                    <input type="text" name="assetID" id="assetID" placeholder="asset id">
+                    <i class='bx bx-x clearfield' ></i>
+                </section>
+                <div class="errorMsg">Error message</div>
+            </section>
+            <!-- source -->
+            <section class="fieldContainer">
+                <section class="inputContainer">
+                    <i class='bx bxs-map-pin fieldIcon'></i>
+                    <input type="text" name="source" id="source" placeholder="Origin">
+                    <i class='bx bx-x clearfield' ></i>
+                </section>
+                <div class="errorMsg">Error message</div>
+            </section>
+            <!-- destination -->
+            <section class="fieldContainer">
+                <section class="inputContainer">
+                    <i class='bx bxs-map fieldIcon' ></i>
+                    <input type="text" name="destination" id="destination" placeholder="destination">
+                    <i class='bx bx-x clearfield' ></i>
+                </section>
+                <div class="errorMsg">Error message</div>
+            </section>
+
+            <button class="submitReqAssetBtn" id="submitAssetForm">Request</button>
+        </form>
+    </section>
+    <section class="modalFormBack" id="assetFormBack">
+        <i class='bx bx-x closeModal' ></i>
+        <i class="responseIcon"></i>
+        <div class="responseTitle"></div>
+        <div class="responseMsg"></div>
+    </section>
+</section>
+
+
+
+    <!-- <script src="./request.js"></script> -->
+    <script src="./request.js"></script>
+ </body>
+ </html>

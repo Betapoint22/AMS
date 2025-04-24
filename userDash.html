@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./userDashStyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'> <!--icons link-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> <!--JQuery - AJAX-->
+</head>
+<body>
+    <section class="sidebar">
+        <section class="imageSet">
+            <img src="./images/soulLogo.png" alt="" class="logo">
+        </section>
+        <nav class="sideNav">
+            <!-- <ul>
+                <li>
+                    <a href="./userDash.html"><i class='bx bxs-dashboard'></i></a>
+                </li>
+                <li>
+                    <a href="./settings2.html"><i class='bx bxs-user'></i></a>
+                </li>
+            </ul> -->
+        </nav>
+        <section class="sideOpts">
+            <span class="toggleBtn">
+                <input type="checkbox" name="switch" id="switch">
+                <label for="switch"></label>
+            </span>
+            <!-- <a href="./settings.html" class="settingsBtn"><i class='bx bxs-cog'></i></a> -->
+            <button class="logoutBtn" id="logoutBtn"><i class='bx bx-log-out-circle' ></i></button>
+        </section>
+     </section>
+     <section class="mainBody">
+        <section class="header">
+            <span class="pageName">Dashboard</span>
+            <section class="headerBtnSet">
+                <button class="reqAsset" id="launchRequestForm">Request asset</button>
+            </section>
+        </section>
+
+        <section class="panels">
+            <section class="panel1">
+                <section class="cardset1">
+                    <section class="card card1">
+                        <div class="key">Assets</div>
+                        <div class="value" id="numberOfAssets">71</div>
+                    </section>
+                    <section class="card card2">
+                        <div class="key">Department</div>
+                        <div class="value" id="department">Electronics</div>
+                    </section>
+                    <section class="card card3"> 
+                        <div class="key">Movements this month</div>
+                        <div class="value" id="movementPerMonth">115</div>
+                    </section>
+                    <section class="card card4">
+                        <div class="key">Movements this week</div>
+                        <div class="value" id="movementPerWeek">115</div>
+                    </section>
+                </section>
+            </section>
+            <section class="panel2">
+                <section class="subPanel1">
+                    <section class="tableContainer">
+                        <section class="tableOpts"></section>
+                        <section class="tableHolder movementsTable">
+                            <table>
+                              
+                            </table>
+                        </section>
+                    </section>
+                    <section class="cardset2">
+                        <section class="cardbody">
+                            <div class="cardHeader">
+                                <div class="key">Total requests</div>
+                                <div class="value" id="totalRequest">100</div>
+                            </div>
+                            <div class="subCardSet">
+                                <div class="subCard">
+                                    <div class="key">Approved</div>
+                                    <div class="value" id="approvedRequest">80</div>
+                                </div>
+                                <div class="subCard">
+                                    <div class="key">Denied</div>
+                                    <div class="value" id="deniedRequest">10</div>
+                                </div>
+                                <div class="subCard">
+                                    <div class="key">Pending</div>
+                                    <div class="value" id="pendingRequest">10</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="card">
+                            <div class="key">Alerts</div>
+                            <div class="value" id="alerts">115</div>
+                        </section>
+                    </section>
+                </section>
+                <section class="subPanel2">
+                    <section class="tablePanel">
+                        <section class="tableOpts"></section>
+                        <section class="tableHolder assetsTable">
+                            <table>
+
+                            </table>
+                        </section>
+                    </section>
+                </section>
+            </section>
+        </section>
+     </section>
+
+     <section class="modal reqAssetModal" id="assetForm">
+        <section class="modalFormFront" id="assetFormFront">
+            <i class='bx bx-x closeModal' ></i>
+            <h2 class="modalTitle">Request asset</h2>
+            <form class="modalForm reqAssetForm">
+                <!-- requestor Name -->
+                <section class="fieldContainer">
+                    <section class="inputContainer">
+                        <i class='bx bxs-user fieldIcon' ></i>
+                        <input type="text" name="reqName" id="reqName" placeholder="your name">
+                        <i class='bx bx-x clearfield' ></i>
+                    </section>
+                    <div class="errorMsg">Error message</div>
+                </section>
+                <!-- requestor ID -->
+                <section class="fieldContainer">
+                    <section class="inputContainer">
+                        <i class='bx bxs-id-card fieldIcon' ></i>
+                        <input type="text" name="reqID" id="reqID" placeholder="your id">
+                        <i class='bx bx-x clearfield' ></i>
+                    </section>
+                    <div class="errorMsg">Error message</div>
+                </section>
+                <!-- asset Department -->
+                <section class="fieldContainer">
+                    <section class="inputContainer">
+                        <i class='bx bxs-buildings fieldIcon' ></i>
+                        <input type="text" name="assetDept" id="assetDept" placeholder="asset dept">
+                        <i class='bx bx-x clearfield' ></i>
+                    </section>
+                    <div class="errorMsg">Error message</div>
+                </section>
+                <!-- asset ID -->
+                <section class="fieldContainer">
+                    <section class="inputContainer">
+                        <i class='bx bxs-devices fieldIcon' ></i>
+                        <input type="text" name="assetID" id="assetID" placeholder="asset id">
+                        <i class='bx bx-x clearfield' ></i>
+                    </section>
+                    <div class="errorMsg">Error message</div>
+                </section>
+                <!-- source -->
+                <section class="fieldContainer">
+                    <section class="inputContainer">
+                        <i class='bx bxs-map-pin fieldIcon'></i>
+                        <input type="text" name="source" id="source" placeholder="Origin">
+                        <i class='bx bx-x clearfield' ></i>
+                    </section>
+                    <div class="errorMsg">Error message</div>
+                </section>
+                <!-- destination -->
+                <section class="fieldContainer">
+                    <section class="inputContainer">
+                        <i class='bx bxs-map fieldIcon' ></i>
+                        <input type="text" name="destination" id="destination" placeholder="destination">
+                        <i class='bx bx-x clearfield' ></i>
+                    </section>
+                    <div class="errorMsg">Error message</div>
+                </section>
+    
+                <button class="submitReqAssetBtn" id="submitAssetForm">Request</button>
+            </form>
+        </section>
+        <section class="modalFormBack" id="assetFormBack">
+            <i class='bx bx-x closeModal' ></i>
+            <i class="responseIcon"></i>
+            <div class="responseTitle"></div>
+            <div class="responseMsg"></div>
+        </section>
+    </section>
+
+    <script src="./userDashScript.js"></script>
+</body>
+</html>
